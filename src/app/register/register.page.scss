@@ -1,6 +1,6 @@
 
 ion-content{
-    --background: url(../../assets/casey-lee-awj7sRviVXo-unsplas.jpg) 0 0/100% 100% no-repeat;
+    --background: url(../../assets/food1.jpg) 0 0/100% 100% no-repeat;
 }
 
 h1{
@@ -10,8 +10,6 @@ h1{
 }
 p{
     color: red;
-    top: 250px;
-    position: relative;
 }
 .form{
     align-content: center;
@@ -28,5 +26,9 @@ a{
 }
 .submit-btn{
     left: 90px;
+    position: relative;
+}
+ion-card{
+    top: 200px;
     position: relative;
 }

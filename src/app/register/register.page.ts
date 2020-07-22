@@ -46,7 +46,9 @@ export class RegisterPage implements OnInit {
       .then(res => {
         console.log(res);
         this.errorMessage = "";
-        this.successMessage = "Your account has been created. Please log in.";
+        this.validations_form.reset();
+        this.successMessage = "Your account has been created.Page is forwarded to Customer home page.";
+        this.navCtrl.navigateForward('/customer-home')
       }, err => {
         console.log(err);
         this.errorMessage = err.message;

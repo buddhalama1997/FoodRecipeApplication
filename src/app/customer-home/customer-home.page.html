@@ -1,14 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-searchbar></ion-searchbar>
+    <ion-button (click)="logout()">
+      <ion-icon slot="icon-only" name="exit"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 <ion-searchbar></ion-searchbar>
 
 <ion-content>
-  <h1>Home Page</h1>
-  <ion-card>
+  <ion-card class="head">
+    <h2>Home Page</h2>
+
+  </ion-card>
+  <ion-card class='foot'>
     <h2>Food Recipe</h2>
+    <ion-button size="large" type="submit"  expand="block" color="danger" routerLink='/favourite' class="button">
+      View Favourite</ion-button>
     <ion-button size="large" type="submit"  expand="block" color="danger" routerLink='/view-recipes-customer' class="button">
     View Recipes</ion-button>  
   </ion-card>

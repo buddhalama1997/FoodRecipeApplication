@@ -9,7 +9,7 @@
 
     <ion-item>
       <ion-label position="floating" color="danger">Email</ion-label>
-      <ion-input type="text" formControlName="email"></ion-input>
+      <ion-input type="text" formControlName="email"color="danger"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.email">
@@ -22,7 +22,7 @@
 
     <ion-item>
       <ion-label position="floating" color="danger">Password</ion-label>
-      <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
+      <ion-input type="password" formControlName="password" class="form-controll" color="danger"required></ion-input>
     </ion-item>
     <div class="validation-errors">
       <ng-container *ngFor="let validation of validation_messages.password">
@@ -35,9 +35,11 @@
 
     <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid" color="danger">Log In</ion-button>
 
-    <label class="error-message">{{errorMessage}}</label>
+    <label class="error-message" color="danger">{{errorMessage}}</label>
   </form>
-  <p class="go-to-register">
-    No account yet? <a (click)="goToRegisterPage()"><u><b> Create an account.</b></u></a>
-  </p>
+  <ion-card>
+    <p class="go-to-register">
+      No account yet? <a (click)="goToRegisterPage()"><u><b> Create an account.</b></u></a>
+    </p>
+  </ion-card>
 </ion-content>

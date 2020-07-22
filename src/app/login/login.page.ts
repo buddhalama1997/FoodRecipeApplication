@@ -45,7 +45,8 @@ export class LoginPage implements OnInit {
       .then(res => {
         console.log(res);
         this.errorMessage = "";
-        this.navCtrl.navigateForward('/customer-home');
+        this.validations_form.reset();
+        this.navCtrl.navigateForward('/add-recipe');
       }, err => {
         this.errorMessage = err.message;
       })

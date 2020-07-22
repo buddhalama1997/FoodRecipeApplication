@@ -1,31 +1,99 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Add Recipe</ion-title>
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-title>
+      Admin Home
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form class="forms">
-    <ion-grid>
-      <ion-row color="primary" justify-content-center>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <div padding>
-            <ion-item>
-              <ion-input name="NameofDish" type="text" placeholder="Name of Dish" ></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="Descriptions" type="text" placeholder="Description of dish" ></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="Steps" type="text" placeholder="Steps" ></ion-input>
-            </ion-item>
-          </div>
-          <div padding>
-            <ion-button size="large" type="submit"  expand="block" color="danger">Add Dish</ion-button>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
-</ion-content>
+<ion-content [fullscreen]="true" class="ion-padding">
 
+  <form [formGroup]="studentForm" (ngSubmit)="CreateRecord()">
+
+    <ion-item>
+      <ion-label position="floating" color="danger">Name Of Dish</ion-label>
+      <ion-input formControlName="Name"color="danger"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" color="danger">Description</ion-label>
+      <ion-input formControlName="Description" color="danger"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" color="danger">Steps</ion-label>
+      <ion-input formControlName="Steps" color="danger"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button (click)="CreateRecord()" [disabled]="studentForm.invalid" color="success">
+        <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
+        &nbsp;Create Record
+      </ion-button>
+    </ion-item>
+
+  </form>
+
+
+  <ion-card *ngFor="let item of List" color="warning">
+    <span *ngIf="!item.isEdit; else elseBlock">
+      <ion-card-header>
+        <ion-card-title>{{item.Name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+
+        <ion-button shape="round" color="secondary" size="small" (click)="EditRecord(item)">
+          <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+
+        </ion-button>
+        <ion-button shape="round" color="danger" size="small" (click)="RemoveRecord(item.id)">
+          <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+
+        </ion-button>
+      </ion-card-content>
+    </span>
+    <ng-template #elseBlock>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                Edit
+              </ion-col>
+              <ion-col>
+                <ion-button fill="solid" color="medium" size="small" (click)="item.isEdit = false">
+                  Cancel
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button fill="solid" color="success" size="small" (click)="UpdateRecord(item)">
+                  Update
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label><strong>Name of Dish</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.EditName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Description</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.EditDescription"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Steps</strong></ion-label>
+          <ion-input type="text" [(ngModel)]="item.EditSteps"></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ng-template>
+  </ion-card>
+
+</ion-content>
+<ion-footer (click)="logout()">
+  <ion-toolbar color="secondary">
+    <ion-title>Log out</ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 
 @Component({
-  selector: 'app-view-recipes-customer',
-  templateUrl: './view-recipes-customer.page.html',
-  styleUrls: ['./view-recipes-customer.page.scss'],
+  selector: 'app-favourite',
+  templateUrl: './favourite.page.html',
+  styleUrls: ['./favourite.page.scss'],
 })
-export class ViewRecipesCustomerPage implements OnInit {
-
+export class FavouritePage implements OnInit {
   constructor(private firebaseService: FirebaseService) { }
   List = [];
   ngOnInit() {
-    this.firebaseService.read_students().subscribe(data => {
+    this.firebaseService.read_Favourite().subscribe(data => {
 
       this.List = data.map(e => {
         return {
@@ -25,5 +24,4 @@ export class ViewRecipesCustomerPage implements OnInit {
       console.log(this.List);
     });
   }
-
 }

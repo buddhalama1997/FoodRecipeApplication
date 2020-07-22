@@ -11,14 +11,22 @@ ion-title{
     color: rgb(131, 8, 8);
     font-weight: bold;
 }
-ion-card{
-    top:200px;
+.foot{
+    position: relative;
+    top:140px;
 }
 
-h1{
-    position: relative;
-    text-align: center;
-    color:white;
-    top: 100px;
 
+h2{
+    text-align: auto;
+    color: red;
+    font-weight: bold;
+}
+
+.head{
+    position: relative;
+    height: 70px;
+    width: 150px;
+    left: 50px;
+    top: 70px;
 }
